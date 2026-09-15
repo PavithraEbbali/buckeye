@@ -605,6 +605,9 @@ h1,h2,h3,h4 { font-family: var(--co-font-head); line-height: 1.08; letter-spacin
 }
 @media (max-width: 560px) {
   .zc__form { flex-direction: column; }
+  /* flex-basis resolves against the main axis: once the form stacks, the
+     12rem basis would set a 192px-tall input. Reset it to content height. */
+  .zc__input { flex: 0 0 auto; width: 100%; }
   .zc__btn { width: 100%; }
 }
 
@@ -616,7 +619,7 @@ h1,h2,h3,h4 { font-family: var(--co-font-head); line-height: 1.08; letter-spacin
    the menu toggle. Below ~400px those three stop fitting side by side, so the
    button and wordmark step down rather than pushing the page into horizontal
    scroll. The number stays visible as text at every width. */
-@media (max-width: 400px) {
+@media (max-width: 460px) {
   .co-nav { gap: .5rem; min-height: 62px; }
   .co-brand { gap: .5rem; min-width: 0; }
   .co-brand__mark { width: 32px; height: 32px; }
