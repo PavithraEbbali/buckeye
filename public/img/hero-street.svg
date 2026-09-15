@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1800" width="1400" height="1800"
+     preserveAspectRatio="xMidYMid slice" role="img"
+     aria-label="A Northwest Ohio residential street at dusk, lit windows and a fiber service drop running to a home">
+  <!--
+    PALETTE LOCK — every colour below is one of the nine tokens read live from
+    buckeyebroadband.com. No other hex value appears in this file; all tints
+    and shades are produced with opacity, never by inventing a new colour.
+
+      #012151  deep navy        #002e6c  primary (blue)
+      #27455c  slate            #05a2f6  cyan
+      #585858  dark-grey        #d12229  brand red
+      #f2f6f7  surface          #ffffff  white          #000000  black
+  -->
+  <defs>
+    <linearGradient id="ps-sky" x1=".12" y1="0" x2=".68" y2="1">
+      <stop offset="0"   stop-color="#000000"/>
+      <stop offset=".18" stop-color="#012151"/>
+      <stop offset=".46" stop-color="#002e6c"/>
+      <stop offset=".70" stop-color="#27455c"/>
+      <stop offset=".88" stop-color="#05a2f6" stop-opacity=".72"/>
+      <stop offset="1"   stop-color="#05a2f6"/>
+    </linearGradient>
+    <radialGradient id="ps-glow" cx=".18" cy=".72" r=".56">
+      <stop offset="0"   stop-color="#f2f6f7" stop-opacity=".92"/>
+      <stop offset=".16" stop-color="#05a2f6" stop-opacity=".62"/>
+      <stop offset=".46" stop-color="#05a2f6" stop-opacity=".22"/>
+      <stop offset="1"   stop-color="#05a2f6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ps-ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"   stop-color="#27455c"/>
+      <stop offset=".32" stop-color="#012151"/>
+      <stop offset="1"   stop-color="#000000"/>
+    </linearGradient>
+    <linearGradient id="ps-wall" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#27455c"/>
+      <stop offset=".55" stop-color="#002e6c"/>
+      <stop offset="1" stop-color="#012151"/>
+    </linearGradient>
+    <linearGradient id="ps-wall2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#27455c" stop-opacity=".85"/>
+      <stop offset="1" stop-color="#012151"/>
+    </linearGradient>
+    <linearGradient id="ps-haze" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"  stop-color="#05a2f6" stop-opacity=".30"/>
+      <stop offset=".5" stop-color="#05a2f6" stop-opacity=".10"/>
+      <stop offset="1"  stop-color="#05a2f6" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="ps-vig" cx=".5" cy=".42" r=".78">
+      <stop offset=".42" stop-color="#000000" stop-opacity="0"/>
+      <stop offset=".80" stop-color="#000000" stop-opacity=".34"/>
+      <stop offset="1"   stop-color="#000000" stop-opacity=".76"/>
+    </radialGradient>
+    <filter id="ps-far"  x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="3.2"/></filter>
+    <filter id="ps-fore" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="26"/></filter>
+    <filter id="ps-bloom" x="-300%" y="-300%" width="700%" height="700%"><feGaussianBlur stdDeviation="16"/></filter>
+    <filter id="ps-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".82" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1400" height="1800" fill="url(#ps-sky)"/>
+  <g filter="url(#ps-far)" opacity=".38">
+    <ellipse cx="980"  cy="300" rx="440" ry="26" fill="#05a2f6"/>
+    <ellipse cx="420"  cy="430" rx="360" ry="18" fill="#f2f6f7"/>
+    <ellipse cx="1180" cy="480" rx="300" ry="15" fill="#05a2f6"/>
+  </g>
+  <rect width="1400" height="1800" fill="url(#ps-glow)"/>
+
+  <!-- early stars -->
+  <g fill="#f2f6f7">
+    <circle cx="248"  cy="150" r="2.2" opacity=".46"/><circle cx="612"  cy="96"  r="1.7" opacity=".34"/>
+    <circle cx="946"  cy="196" r="2.0" opacity=".30"/><circle cx="1260" cy="120" r="1.8" opacity=".38"/>
+    <circle cx="1130" cy="330" r="1.5" opacity=".24"/>
+  </g>
+
+  <!-- distant treeline -->
+  <g filter="url(#ps-far)">
+    <path d="M0 760 q52-46 108-18 40-52 96-22 44-46 100-12 50-50 106-10 46-42 100-6
+             52-52 112-12 44-40 98-8 50-48 106-14 46-38 96-6 l0 240 -1422 0z"
+          fill="#012151" opacity=".9"/>
+  </g>
+
+  <!-- street plane -->
+  <path d="M0 1040 L1400 980 L1400 1800 L0 1800 Z" fill="url(#ps-ground)"/>
+  <path d="M0 1040 L1400 980 L1400 1180 L0 1300 Z" fill="#05a2f6" opacity=".13"/>
+
+  <!-- ===== near home ===== -->
+  <g>
+    <path d="M690 1060 L980 830 L1270 1060 L1270 1520 L690 1520 Z" fill="url(#ps-wall)"/>
+    <path d="M660 1072 L980 812 L1300 1072 L1270 1096 L980 862 L690 1096 Z" fill="#012151"/>
+    <path d="M660 1072 L980 812 L1000 828 L690 1084 Z" fill="#05a2f6" opacity=".18"/>
+
+    <!-- porch -->
+    <rect x="742" y="1210" width="330" height="310" fill="#27455c" opacity=".55"/>
+    <rect x="742" y="1196" width="330" height="20" fill="#012151"/>
+    <g fill="#012151">
+      <rect x="760"  y="1216" width="18" height="304"/>
+      <rect x="1040" y="1216" width="18" height="304"/>
+    </g>
+
+    <!-- door, with the one brand-red accent in the scene -->
+    <rect x="872" y="1268" width="86" height="252" rx="4" fill="#d12229" opacity=".82"/>
+    <rect x="884" y="1284" width="62" height="120" rx="3" fill="#f2f6f7" opacity=".9"/>
+    <g filter="url(#ps-bloom)" opacity=".42">
+      <rect x="884" y="1284" width="62" height="120" rx="3" fill="#05a2f6"/>
+    </g>
+
+    <!-- lit windows: cool interior light, brand cyan through glass -->
+    <g>
+      <rect x="1104" y="1150" width="106" height="126" rx="5" fill="#05a2f6" opacity=".55"/>
+      <rect x="1104" y="1150" width="106" height="126" rx="5" fill="#f2f6f7" opacity=".42"/>
+      <rect x="756"  y="1150" width="96"  height="118" rx="5" fill="#05a2f6" opacity=".42"/>
+      <rect x="756"  y="1150" width="96"  height="118" rx="5" fill="#f2f6f7" opacity=".30"/>
+      <g stroke="#012151" stroke-width="4" opacity=".7">
+        <line x1="1157" y1="1150" x2="1157" y2="1276"/>
+        <line x1="804"  y1="1150" x2="804"  y2="1268"/>
+      </g>
+    </g>
+    <g filter="url(#ps-bloom)" opacity=".34">
+      <rect x="1104" y="1150" width="106" height="126" rx="5" fill="#05a2f6"/>
+    </g>
+
+    <!-- porch lamp -->
+    <circle cx="1004" cy="1262" r="9" fill="#f2f6f7"/>
+    <g filter="url(#ps-bloom)" opacity=".40"><circle cx="1004" cy="1262" r="30" fill="#05a2f6"/></g>
+  </g>
+
+  <!-- second home, further back -->
+  <g opacity=".9">
+    <path d="M300 1120 L470 960 L640 1120 L640 1420 L300 1420 Z" fill="url(#ps-wall2)"/>
+    <path d="M280 1130 L470 946 L660 1130 L640 1148 L470 986 L300 1148 Z" fill="#000000" opacity=".72"/>
+    <rect x="392" y="1210" width="78" height="96" rx="4" fill="#05a2f6" opacity=".46"/>
+    <rect x="510" y="1210" width="78" height="96" rx="4" fill="#f2f6f7" opacity=".26"/>
+  </g>
+
+  <!-- ===== the fiber: pole, spans, and the drop to the house ===== -->
+  <g>
+    <rect x="176" y="700" width="26"  height="820" fill="#000000" opacity=".82"/>
+    <rect x="96"  y="768" width="188" height="16" rx="6" fill="#000000" opacity=".82"/>
+    <rect x="118" y="826" width="144" height="13" rx="5" fill="#000000" opacity=".82"/>
+    <g fill="none" stroke="#000000" stroke-opacity=".78" stroke-width="6" stroke-linecap="round">
+      <path d="M190 790 q330 150 700 96"/>
+      <path d="M190 844 q330 160 700 110"/>
+    </g>
+    <!-- spans catching the last of the sky -->
+    <g fill="none" stroke="#05a2f6" stroke-opacity=".62" stroke-width="2" stroke-linecap="round">
+      <path d="M190 787 q330 150 700 96"/>
+      <path d="M190 841 q330 160 700 110"/>
+    </g>
+    <path d="M196 880 q290 190 560 214" fill="none" stroke="#000000" stroke-opacity=".7" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="758" cy="1096" r="9" fill="#05a2f6" opacity=".85"/>
+  </g>
+
+  <!-- long shadows toward camera -->
+  <g fill="#000000" opacity=".36">
+    <path d="M690 1520 L1270 1520 L1180 1800 L560 1800 Z"/>
+    <path d="M300 1420 L640 1420 L600 1640 L232 1640 Z" opacity=".7"/>
+    <path d="M176 1520 L202 1520 L286 1800 L236 1800 Z"/>
+  </g>
+
+  <!-- defocused foreground framing -->
+  <g fill="#000000" filter="url(#ps-fore)" opacity=".9">
+    <path d="M-80 1800 L-80 1560 q120-120 250-40 100-96 210 10 90-70 150 46 l0 424z"/>
+    <path d="M1080 1800 L1080 1520 q130-140 260-30 96-84 180 30 l0 280z"/>
+  </g>
+
+  <!-- lens finish -->
+  <rect y="700" width="1400" height="1100" fill="url(#ps-haze)"/>
+  <rect width="1400" height="1800" fill="url(#ps-vig)"/>
+  <rect width="1400" height="1800" filter="url(#ps-grain)" opacity=".07"/>
+</svg>

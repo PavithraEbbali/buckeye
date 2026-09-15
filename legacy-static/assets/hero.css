@@ -1,0 +1,328 @@
+/* ==========================================================================
+   HERO — asymmetric photo poster
+   Namespace: ph-
+
+   Tokens read live from buckeyebroadband.com (computed styles + :root vars):
+     --primary/--blue #002e6c   --cyan #05a2f6   red #d12229
+     --dark-grey #585858        --primary-20 #ccd5e2   --primary-25 #b8c4d6
+     surface #f2f6f7            deep navy #012151      --white #fff
+     --border-radius-default 10px   --default-element-spacing 24px
+     --button-spacing 16px          --large-font-size 20px
+     --text-readability-max-width 600px
+     Figtree Light / Regular / Medium / SemiBold / Heavy
+   Gold (#ffc40d) occurs zero times on the live site and is not used.
+
+   Structure — deliberately not the two-column template:
+     · the photograph is the ground, bled off the top, right and bottom edges
+       at ~62% of the frame; it is not a graphic sitting inside white space
+     · the copy column OVERLAPS the photo edge rather than sitting beside it
+     · the offer (1 Gig / $49.99 / 3-year lock) is set as editorial type ON the
+       photo with its own scrim — no circular gauge, no floating stat widget
+     · one full-width trust strip divided by hairlines replaces the scattered
+       badge pills
+
+   Motion contract:
+     · authored in the visible end state; JS only animates *from* an offset
+     · transform-only entrances, nothing above the fold hidden with opacity
+     · load-triggered only, no ScrollTrigger on the LCP element
+     · prefers-reduced-motion shows the final state, hovers stay live
+   ========================================================================== */
+
+.ph {
+  --ph-navy:  #002e6c;
+  --ph-deep:  #012151;
+  --ph-cyan:  #05a2f6;
+  --ph-red:   #d12229;
+  --ph-grey:  #585858;
+  --ph-p20:   #ccd5e2;
+  --ph-r:     10px;      /* --border-radius-default */
+  --ph-gap:   24px;      /* --default-element-spacing */
+  --ph-bgap:  16px;      /* --button-spacing */
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #fff;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: clamp(620px, 90vh, 900px);
+}
+
+/* ---------- the photograph: ground plane, bled off three edges ------------ */
+.ph-shot {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 auto;          /* pinned right, bleeding top/right/bottom */
+  width: 62%;
+  pointer-events: none;
+  perspective: 1200px;
+  /* MUST clip: the plate is overscaled for parallax headroom, so without this
+     it bleeds past the container and the grade/feather overlays (inset:0 on
+     this box) stop short of it — leaving a raw strip of ungraded photo down
+     the left edge. */
+  overflow: hidden;
+}
+/* overscale gives the plate room to drift inside the clip without ever
+   exposing an edge; the parallax moves THIS, not the container, so the
+   overlays stay locked to the full plate */
+.ph-shot > .ph-img { transform: scale(1.10); transform-origin: 55% 55%; will-change: transform; }
+.ph-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 62% 58%;
+  display: block;
+}
+/* warm grade + a lift toward the brand blues in the shadows */
+.ph-grade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(1,33,81,.34) 0%, transparent 22%, transparent 52%, rgba(1,20,43,.72) 100%),
+    linear-gradient(90deg, rgba(255,255,255,.99) 0%, rgba(255,255,255,.92) 6%,
+                    rgba(255,255,255,.62) 15%, rgba(255,255,255,.24) 26%, transparent 38%);
+}
+/* soft feather where the photo meets the copy column — kills the hard seam
+   that makes a split composition read as two pasted-together halves */
+.ph-edge {
+  position: absolute; inset: 0;
+  background: linear-gradient(93deg, #fff 0%, rgba(255,255,255,.94) 4%,
+              rgba(255,255,255,.66) 11%, rgba(255,255,255,.28) 20%, rgba(255,255,255,0) 32%);
+}
+
+/* ---------- layout ------------------------------------------------------- */
+.ph-grid {
+  position: relative; z-index: 1;
+  width: 100%; max-width: 1320px;
+  margin-inline: auto;
+  padding: clamp(56px, 8vh, 104px) clamp(18px, 4vw, 48px) clamp(28px, 4vh, 48px);
+  display: grid;
+  /* 46/54 — deliberately not symmetric */
+  grid-template-columns: minmax(0, 46fr) minmax(0, 54fr);
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+}
+
+/* copy column pushes INTO the photo rather than stopping at its edge */
+.ph-copy { position: relative; z-index: 2; padding-right: clamp(0px, 3vw, 56px); }
+
+/* ---------- kicker ------------------------------------------------------- */
+.ph-kicker {
+  display: flex; align-items: center; gap: .7rem;
+  margin: 0 0 var(--ph-gap);
+  font-family: var(--co-font-head, 'Figtree', sans-serif);
+  font-weight: 700; font-size: .74rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ph-navy);
+}
+.ph-kicker__rule {
+  width: 34px; height: 3px; border-radius: 3px; flex: none;
+  background: linear-gradient(90deg, var(--ph-cyan), var(--ph-red));
+  transform-origin: left center;
+}
+
+/* ---------- headline ----------------------------------------------------- */
+.ph-h {
+  margin: 0;
+  font-family: var(--co-font-head, 'Figtree', sans-serif);
+  color: var(--ph-navy);
+  line-height: 1.02;
+  letter-spacing: -.035em;
+}
+.ph-h__l { display: block; overflow: hidden; padding-bottom: .06em; perspective: 800px; }
+.ph-w  { display: inline-block; white-space: nowrap; }
+.ph-w__i { display: inline-block; will-change: transform; transform-origin: 50% 100%; }
+.ph-h__i { display: block; will-change: transform; }
+.ph-h__l:nth-child(1) .ph-h__i { font-weight: 700; font-size: clamp(1.5rem, 2.5vw, 2.15rem); }
+.ph-h__l:nth-child(2) .ph-h__i { font-weight: 900; font-size: clamp(2rem, 3.9vw, 3.3rem); }
+.ph-h__l--key { position: relative; overflow: visible; }
+.ph-h__sheen {
+  position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background: linear-gradient(100deg, rgba(255,255,255,0) 42%,
+              rgba(255,255,255,.85) 50%, rgba(255,255,255,0) 58%);
+  mix-blend-mode: overlay;
+}
+.ph-h__l--key .ph-h__i {
+  font-weight: 900; font-size: clamp(2rem, 3.9vw, 3.3rem); color: var(--ph-cyan);
+  white-space: nowrap;
+}
+.ph-rule {
+  position: absolute; left: -1%; bottom: -.30em; width: 102%; height: .34em;
+  overflow: visible; pointer-events: none;
+}
+.ph-rule path { fill: none; stroke: url(#phRule); stroke-width: 9; stroke-linecap: round; }
+
+.ph-sub {
+  margin: var(--ph-gap) 0 0;
+  max-width: 46ch;                        /* under --text-readability-max-width */
+  font-size: clamp(1rem, 1.2vw, 1.13rem);
+  line-height: 1.62;
+  color: var(--ph-grey);
+}
+
+/* ---------- actions ------------------------------------------------------ */
+.ph-act { display: flex; flex-wrap: wrap; gap: var(--ph-bgap); margin-top: clamp(22px, 3vw, 34px); }
+.ph-btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: 15px 26px; border-radius: 999px; text-decoration: none;
+  font-family: var(--co-font-head, 'Figtree', sans-serif);
+  font-weight: 800; font-size: 1.02rem; letter-spacing: -.01em;
+  transition: background .3s ease, color .3s ease, border-color .3s ease,
+              transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s ease;
+  will-change: transform;
+}
+.ph-btn svg { width: 17px; height: 17px; transition: transform .35s cubic-bezier(.16,1,.3,1); }
+.ph-btn--go {
+  background: var(--ph-red); color: #fff;
+  box-shadow: 0 14px 30px -14px rgba(209,34,41,.8);
+}
+.ph-btn--go:hover { background: #b81c22; transform: translateY(-3px);
+  box-shadow: 0 22px 42px -14px rgba(209,34,41,.92); }
+.ph-btn--go:hover svg { transform: translateX(5px); }
+.ph-btn--go:active { transform: translateY(-1px) scale(.985); }
+.ph-btn--tel {
+  background: #fff; color: var(--ph-navy); border: 1.6px solid var(--ph-p20);
+}
+.ph-btn--tel svg { color: var(--ph-cyan); }
+.ph-btn--tel:hover { border-color: var(--ph-navy); background: #f2f6f7; transform: translateY(-3px); }
+.ph-btn--tel:hover svg { transform: rotate(-14deg) scale(1.12); }
+.ph-btn--tel:active { transform: translateY(-1px) scale(.985); }
+.ph-btn:focus-visible { outline: 3px solid var(--ph-cyan); outline-offset: 3px; }
+
+/* ---------- the offer, set into the photograph ---------------------------
+   Editorial type on its own scrim. No dial, no card, no border — it reads as
+   part of the image rather than a widget parked on top of it.               */
+/* No box. The scrim is a soft directional falloff keyed to the plate's own
+   light — the sun sits low-left, so the type is lifted out of the warm shadow
+   under the house rather than pasted onto a dark rectangle. Every edge fades
+   to nothing, so there is no card outline to read as a floating widget. */
+.ph-offer {
+  position: relative; z-index: 2;
+  justify-self: end; align-self: end;
+  max-width: 32ch;
+  padding: clamp(26px, 3vw, 40px) clamp(24px, 2.8vw, 38px) clamp(24px, 2.8vw, 34px);
+  color: #fff;
+  background:
+    radial-gradient(120% 116% at 88% 88%, rgba(1,33,81,.90) 0%, rgba(1,33,81,.66) 42%,
+                    rgba(1,33,81,.26) 70%, rgba(1,33,81,0) 88%),
+    linear-gradient(112deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.30) 46%, rgba(0,0,0,.54) 100%);
+}
+/* the light catch: a warm rim on the sunward edge, fading out top and bottom */
+.ph-offer::before {
+  content: ""; position: absolute; left: 0; top: 12%; bottom: 12%; width: 2px;
+  background: linear-gradient(180deg, rgba(5,162,246,0), rgba(242,246,247,.85) 40%,
+                              rgba(5,162,246,.95) 78%, rgba(5,162,246,0));
+  pointer-events: none;
+}
+.ph-offer { overflow: hidden; }
+.ph-offer__glint {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 42%;
+  pointer-events: none; z-index: 1;
+  background: linear-gradient(100deg, rgba(242,246,247,0) 0%,
+              rgba(242,246,247,.16) 46%, rgba(5,162,246,.20) 58%, rgba(242,246,247,0) 100%);
+}
+.ph-offer > *:not(.ph-offer__glint) { position: relative; z-index: 2; }
+.ph-offer__lab {
+  display: block; text-shadow: 0 1px 10px rgba(1,20,43,.85);
+  font-family: var(--co-font-head, 'Figtree', sans-serif);
+  font-weight: 700; font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+  color: #9fd0f5;
+}
+.ph-offer__speed {
+  margin: .1rem 0 0; display: flex; align-items: baseline; gap: .4rem;
+  font-family: var(--co-font-head, 'Figtree', sans-serif); letter-spacing: -.05em;
+}
+.ph-offer__speed b {
+  font-weight: 900; font-size: clamp(3.6rem, 7vw, 6rem); line-height: .86;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 2px 0 rgba(0,0,0,.25), 0 4px 18px rgba(1,20,43,.75), 0 22px 48px rgba(1,20,43,.65);
+}
+.ph-offer__speed em {
+  font-style: normal; font-weight: 900; font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+  color: var(--ph-cyan);
+}
+.ph-offer__price {
+  margin: .35rem 0 0; display: flex; align-items: baseline; gap: .08rem;
+  font-family: var(--co-font-head, 'Figtree', sans-serif); letter-spacing: -.03em;
+}
+.ph-offer__price s { text-decoration: none; font-weight: 800; font-size: 1rem; align-self: flex-start; margin-top: .3em; }
+.ph-offer__price { text-shadow: 0 2px 14px rgba(1,20,43,.85); }
+.ph-offer__price b { font-weight: 900; font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-variant-numeric: tabular-nums; }
+.ph-offer__price i { font-style: normal; font-weight: 700; font-size: .9rem; color: #bcd8f0; margin-left: .18rem; }
+.ph-offer__lock {
+  margin: .7rem 0 0; text-shadow: 0 1px 10px rgba(1,20,43,.88); display: flex; align-items: center; gap: .45rem;
+  font-family: var(--co-font-head, 'Figtree', sans-serif);
+  font-weight: 700; font-size: .82rem; color: #d7ecff;
+}
+.ph-offer__lock svg { width: 15px; height: 15px; color: var(--ph-cyan); flex: none; }
+
+/* ---------- one trust strip ---------------------------------------------- */
+.ph-strip {
+  position: relative; z-index: 2;
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap;
+  border-top: 1px solid var(--ph-p20);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(8px);
+}
+.ph-strip li {
+  display: flex; align-items: center; gap: .55rem;
+  flex: 1 1 auto; min-width: 0;
+  padding: 18px clamp(14px, 1.8vw, 26px);
+  font-family: var(--co-font-head, 'Figtree', sans-serif);
+  font-weight: 700; font-size: .875rem; color: var(--ph-navy);
+  white-space: nowrap;
+  transition: background .3s ease, color .3s ease;
+}
+.ph-strip li + li { box-shadow: inset 1px 0 0 var(--ph-p20); }
+.ph-strip li svg { width: 17px; height: 17px; color: var(--ph-cyan); flex: none;
+  stroke-dasharray: 1; stroke-dashoffset: 0;
+  transition: transform .4s cubic-bezier(.16,1,.3,1), color .3s ease; }
+.ph-strip li { transform-origin: center bottom; }
+.ph-strip li:hover { background: #f2f6f7; }
+.ph-strip li:hover svg { transform: translateY(-2px) rotate(-8deg) scale(1.14); color: var(--ph-red); }
+.ph-strip__where { flex: 2 1 auto; color: var(--ph-grey) !important; font-weight: 600 !important; }
+
+/* ---------- responsive ---------------------------------------------------- */
+/* Between ~1025 and ~1240px the four short items fill the row and the wide
+   coverage item wrapped alone onto a second row, doubling the strip's height
+   to 119px and pushing it past the fold. Drop it to its own full-width line
+   deliberately, and let the others share one row. */
+@media (max-width: 1240px) and (min-width: 1025px) {
+  .ph-strip li { font-size: .82rem; padding-inline: clamp(10px, 1.3vw, 18px); }
+  .ph-strip__where { flex: 1 1 100%; box-shadow: inset 0 1px 0 var(--ph-p20) !important;
+    justify-content: center; }
+}
+
+@media (max-width: 1024px) {
+  .ph-grid { grid-template-columns: 1fr; gap: clamp(24px, 5vw, 44px); }
+  .ph-shot { inset: 0; width: 100%; }
+  .ph-grade { background:
+    linear-gradient(180deg, rgba(255,255,255,.97) 0%, rgba(255,255,255,.9) 34%,
+                    rgba(1,20,43,.30) 62%, rgba(1,20,43,.80) 100%); }
+  .ph-edge { background: none; }
+  .ph-copy { padding-right: 0; }
+  .ph-offer { justify-self: stretch; max-width: none;
+    background:
+      linear-gradient(180deg, rgba(1,33,81,0) 0%, rgba(1,33,81,.56) 34%, rgba(1,33,81,.86) 100%); }
+  .ph-offer::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 2px;
+    background: linear-gradient(90deg, rgba(5,162,246,0), rgba(242,246,247,.8) 38%,
+                                rgba(5,162,246,.95) 76%, rgba(5,162,246,0)); }
+}
+@media (max-width: 620px) {
+  .ph-strip li { flex: 1 1 100%; white-space: normal; padding: 14px 18px; }
+  .ph-strip li + li { box-shadow: inset 0 1px 0 var(--ph-p20); }
+  .ph-btn { flex: 1 1 100%; justify-content: center; }
+}
+
+/* ---------- reduced motion ------------------------------------------------
+   Ambient/entrance motion off, final state pinned, hover + focus untouched. */
+@media (prefers-reduced-motion: reduce) {
+  .ph *, .ph *::before, .ph *::after { animation: none !important; transition: none !important; }
+  .ph-kicker, .ph-sub, .ph-act, .ph-offer, .ph-strip li, .ph-h__i, .ph-kicker__rule,
+  .ph-shot, .ph-copy { transform: none !important; opacity: 1 !important; }
+  /* the plate keeps its overscale so no edge is exposed, but never drifts */
+  .ph-shot > .ph-img { transform: scale(1.06) !important; }
+  .ph-offer__glint { display: none !important; }
+  .ph-rule path { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+  .ph-w__i { transform: none !important; }
+  .ph-h__sheen { display: none !important; }
+  .ph-strip li svg { stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+}

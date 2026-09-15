@@ -1,0 +1,12 @@
+{
+  "name": "Buckeye Broadband Authorized Agent",
+  "short_name": "Buckeye Agent",
+  "description": "Shop and order Buckeye Broadband fiber internet, HD TV, home phone and 5G mobile across NW Ohio & SE Michigan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#01173a",
+  "theme_color": "#002e6c",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

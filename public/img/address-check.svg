@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eaf5ff"/><stop offset="1" stop-color="#cfe8fb"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#sky1)"/>
+  <circle cx="680" cy="90" r="44" fill="#ffc40d"/>
+  <circle cx="680" cy="90" r="72" fill="#ffc40d" opacity="0.2"/>
+  <!-- street -->
+  <rect x="0" y="470" width="800" height="130" fill="#bfd9ee"/>
+  <rect x="60" y="516" width="90" height="10" rx="5" fill="#eaf5ff"/>
+  <rect x="220" y="516" width="90" height="10" rx="5" fill="#eaf5ff"/>
+  <rect x="380" y="516" width="90" height="10" rx="5" fill="#eaf5ff"/>
+  <rect x="540" y="516" width="90" height="10" rx="5" fill="#eaf5ff"/>
+  <!-- house -->
+  <rect x="120" y="250" width="300" height="220" rx="10" fill="#ffffff"/>
+  <path d="M100 260 L270 130 L440 260 Z" fill="#0a2a4f"/>
+  <rect x="250" y="340" width="70" height="130" rx="8" fill="#0a2a4f"/>
+  <rect x="150" y="300" width="70" height="60" rx="8" fill="#7fd0ff"/>
+  <rect x="340" y="300" width="60" height="60" rx="8" fill="#7fd0ff"/>
+  <circle cx="308" cy="404" r="7" fill="#ffc40d"/>
+  <!-- wifi from roof -->
+  <g stroke="#05a2f6" fill="none" stroke-width="10" stroke-linecap="round">
+    <path d="M232 108 a54 54 0 0 1 76 0" opacity="0.55"/>
+    <path d="M248 126 a32 32 0 0 1 44 0"/>
+  </g>
+  <circle cx="270" cy="148" r="8" fill="#d12229"/>
+  <!-- big location pin over house -->
+  <path d="M560 240 q0 -84 78 -84 q78 0 78 84 q0 58 -78 138 q-78 -80 -78 -138z" fill="#d12229"/>
+  <circle cx="638" cy="238" r="34" fill="#ffffff"/>
+  <circle cx="638" cy="238" r="14" fill="#d12229"/>
+  <!-- magnifier -->
+  <circle cx="530" cy="430" r="62" fill="none" stroke="#0a2a4f" stroke-width="16"/>
+  <circle cx="530" cy="430" r="46" fill="#7fd0ff" opacity="0.35"/>
+  <rect x="574" y="474" width="90" height="22" rx="11" transform="rotate(45 574 474)" fill="#0a2a4f"/>
+  <path d="M505 425 l16 16 30 -34" fill="none" stroke="#0a7a3a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

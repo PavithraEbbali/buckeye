@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="den" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0a2a4f"/><stop offset="1" stop-color="#123f7c"/>
+    </linearGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2fae5f"/><stop offset="1" stop-color="#1c8f49"/>
+    </linearGradient>
+    <radialGradient id="denglow" cx="0.72" cy="0.34" r="0.7">
+      <stop offset="0" stop-color="#37b5f8" stop-opacity=".28"/><stop offset="1" stop-color="#37b5f8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#den)"/>
+  <rect width="1200" height="900" fill="url(#denglow)"/>
+
+  <!-- pennants -->
+  <path d="M64 96h136l-68 116z" fill="#d12229"/>
+  <path d="M244 96h136l-68 116z" fill="#37b5f8"/>
+  <path d="M424 96h136l-68 112z" fill="#ffc40d"/>
+
+  <!-- television showing the game -->
+  <rect x="628" y="188" width="500" height="330" rx="18" fill="#01142f"/>
+  <rect x="650" y="210" width="456" height="286" rx="8" fill="url(#field)"/>
+  <g stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".82">
+    <line x1="726" y1="486" x2="828" y2="220"/>
+    <line x1="838" y1="486" x2="940" y2="220"/>
+    <line x1="950" y1="486" x2="1052" y2="220"/>
+  </g>
+  <ellipse cx="892" cy="330" rx="20" ry="13" fill="#ffffff"/>
+  <rect x="676" y="234" width="150" height="30" rx="15" fill="#01142f" fill-opacity=".75"/>
+  <circle cx="700" cy="249" r="9" fill="#d12229"/>
+  <rect x="722" y="243" width="86" height="12" rx="6" fill="#ffffff" fill-opacity=".7"/>
+
+  <!-- foam finger -->
+  <path d="M300 470c0-16 13-29 29-29s29 13 29 29v-96c0-16 13-29 29-29s29 13 29 29v190h-116z" fill="#ffc40d"/>
+  <rect x="300" y="560" width="116" height="34" rx="10" fill="#e0a800"/>
+
+  <!-- fans -->
+  <g fill="#01142f">
+    <circle cx="366" cy="672" r="54"/>
+    <path d="M282 830a84 84 0 0 1 168 0z"/>
+    <circle cx="546" cy="656" r="58"/>
+    <path d="M456 826a90 90 0 0 1 180 0z"/>
+  </g>
+  <rect x="300" y="750" width="132" height="20" rx="10" fill="#37b5f8"/>
+  <rect x="474" y="740" width="144" height="20" rx="10" fill="#d12229"/>
+
+  <!-- snack bowl -->
+  <path d="M800 800a92 92 0 0 0 184 0z" fill="#d12229"/>
+  <ellipse cx="892" cy="800" rx="92" ry="20" fill="#e8464c"/>
+  <g fill="#ffc40d">
+    <circle cx="856" cy="796" r="13"/><circle cx="892" cy="790" r="13"/><circle cx="928" cy="796" r="13"/>
+  </g>
+</svg>

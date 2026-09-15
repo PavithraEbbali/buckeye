@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900">
+  <defs>
+    <linearGradient id="room" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#01173a"/><stop offset="1" stop-color="#0a2f61"/>
+    </linearGradient>
+    <radialGradient id="tvglow" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#37b5f8" stop-opacity="0.5"/><stop offset="1" stop-color="#37b5f8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37b5f8"/><stop offset="1" stop-color="#0569d6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#room)"/>
+  <rect width="1200" height="900" fill="url(#tvglow)"/>
+
+  <!-- wall art -->
+  <rect x="86" y="150" width="104" height="120" rx="8" fill="#ffffff" fill-opacity=".07"/>
+
+  <!-- floor lamp -->
+  <rect x="1006" y="286" width="8" height="250" rx="4" fill="#ffffff" fill-opacity=".16"/>
+  <circle cx="1010" cy="250" r="56" fill="#ffc40d"/>
+  <circle cx="1010" cy="250" r="56" fill="#01173a" fill-opacity=".28"/>
+  <circle cx="1010" cy="250" r="40" fill="#ffc40d"/>
+
+  <!-- television -->
+  <rect x="300" y="196" width="560" height="356" rx="20" fill="#01142f"/>
+  <rect x="322" y="218" width="516" height="312" rx="10" fill="url(#screen)"/>
+  <path d="M366 452 L474 344 L556 424 L648 300 L742 396" fill="none" stroke="#ffffff" stroke-width="17"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="742" cy="396" r="17" fill="#ffc40d"/>
+
+  <!-- couch silhouettes -->
+  <g fill="#01142f">
+    <circle cx="402" cy="606" r="52"/>
+    <path d="M320 760a82 82 0 0 1 164 0z"/>
+    <circle cx="566" cy="580" r="60"/>
+    <path d="M472 762a94 94 0 0 1 188 0z"/>
+    <circle cx="726" cy="612" r="48"/>
+    <path d="M650 762a76 76 0 0 1 152 0z"/>
+  </g>
+  <rect x="240" y="754" width="720" height="146" fill="#01142f"/>
+</svg>

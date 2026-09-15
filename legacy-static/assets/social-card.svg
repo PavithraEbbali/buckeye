@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Figtree, Segoe UI, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#01173a"/><stop offset="0.55" stop-color="#013a86"/><stop offset="1" stop-color="#05a2f6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.2" r="0.7">
+      <stop offset="0" stop-color="#37b5f8" stop-opacity="0.55"/><stop offset="1" stop-color="#37b5f8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc40d"/><stop offset="1" stop-color="#ff9e0d"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- grid -->
+  <g stroke="#ffffff" stroke-opacity="0.06">
+    <path d="M0 90H1200M0 180H1200M0 270H1200M0 360H1200M0 450H1200M0 540H1200"/>
+    <path d="M120 0V630M240 0V630M360 0V630M480 0V630M600 0V630M720 0V630M840 0V630M960 0V630M1080 0V630"/>
+  </g>
+  <!-- brand -->
+  <g transform="translate(80,74)">
+    <rect width="60" height="60" rx="16" fill="#05a2f6"/>
+    <path d="M16 34a14 14 0 0 1 28 0" fill="none" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/>
+    <path d="M22 38.5a8 8 0 0 1 16 0" fill="none" stroke="#ffc40d" stroke-width="4.4" stroke-linecap="round"/>
+    <circle cx="30" cy="43" r="3.4" fill="#fff"/>
+    <text x="78" y="30" fill="#ffffff" font-size="30" font-weight="900">buckeye broadband</text>
+    <text x="78" y="52" fill="#7fd0ff" font-size="15" font-weight="700" letter-spacing="3">AUTHORIZED BUCKEYE BROADBAND RESELLER</text>
+  </g>
+  <!-- headline -->
+  <text x="80" y="300" fill="#ffffff" font-size="72" font-weight="900" letter-spacing="-2">Lock one price.</text>
+  <text x="80" y="384" fill="url(#gold)" font-size="72" font-weight="900" letter-spacing="-2">For three years.</text>
+  <text x="80" y="446" fill="#bcd3ee" font-size="27" font-weight="500">Fiber internet · HD TV · Home phone · 5G mobile</text>
+  <!-- price pill -->
+  <g transform="translate(80,500)">
+    <rect width="360" height="72" rx="36" fill="#ffffff"/>
+    <text x="30" y="47" fill="#002e6c" font-size="30" font-weight="900">From $49.99/mo</text>
+    <rect x="238" y="14" width="108" height="44" rx="22" fill="#d12229"/>
+    <text x="258" y="42" fill="#ffffff" font-size="18" font-weight="800">FIBER</text>
+  </g>
+  <!-- speed badge -->
+  <g transform="translate(880,150)">
+    <circle cx="120" cy="120" r="120" fill="#ffffff" fill-opacity="0.08" stroke="#7fd0ff" stroke-opacity="0.4"/>
+    <text x="120" y="108" fill="#ffffff" font-size="72" font-weight="900" text-anchor="middle">1</text>
+    <text x="120" y="150" fill="#ffc40d" font-size="34" font-weight="900" text-anchor="middle">GIG</text>
+    <text x="120" y="188" fill="#bcd3ee" font-size="18" font-weight="600" text-anchor="middle">top speed</text>
+  </g>
+</svg>

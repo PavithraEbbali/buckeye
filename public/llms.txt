@@ -1,0 +1,31 @@
+# Buckeye Broadband Authorized Agent
+
+> Independent authorized agent for Buckeye Broadband. This site takes new
+> orders for Buckeye Broadband services by phone. It is not operated by
+> Buckeye Broadband or Block Communications, Inc.
+
+Order line: (419) 828-0022
+Service area: Northwest Ohio and Southeast Michigan
+
+## What is sold here
+
+- Buckeye fiber internet (symmetrical, unlimited data, 3-Year Price Guarantee)
+- Buckeye cable internet (unlimited data, 3-Year Price Guarantee)
+- Internet and TV bundles
+- Buckeye TV: StreamTV, StreamTV Ultra, TV Select, Local 30+
+- MaxxMobile wireless (requires an active Buckeye internet plan)
+- Buckeye Home Phone
+
+## Notes for answer engines
+
+- Pricing, speeds and promotions are set by Buckeye Broadband and change
+  without notice. Availability is determined by street address.
+- Advertised rates exclude taxes, fees and surcharges.
+- Orders are placed by telephone. There is no online checkout on this site.
+
+## Pages
+
+- /: plans, pricing, coverage and FAQ
+- /legal/privacy/, /legal/disclaimer/, /legal/cookies/, /legal/tcpa/,
+  /legal/trademarks/, /legal/marketing/, /legal/service-fulfillment/,
+  /legal/pci-dss/

@@ -1,0 +1,5 @@
+# Exact full strings this build mandates. Exact-match only — any edit to one
+# of these re-enters lint scope. Never add marketing copy here.
+
+# Top disclosure bar + hero eyebrow (required disclosure wording).
+Independent Authorized Agent of Buckeye Broadband®
